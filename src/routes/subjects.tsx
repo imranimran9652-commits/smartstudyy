@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useSubjects } from "@/lib/storage";
 import { TopicCard } from "@/components/TopicCard";
+import { Mascot } from "@/components/Mascot";
 import { Plus, Trash2 } from "lucide-react";
 
 export const Route = createFileRoute("/subjects")({
@@ -60,9 +61,9 @@ function SubjectsPage() {
           ))}
         </div>
       ) : subjects.length === 0 ? (
-        <div className="rounded-3xl border-2 border-dashed border-border p-12 text-center">
-          <p className="text-4xl">📚</p>
-          <p className="mt-2 font-semibold">No subjects yet</p>
+        <div className="rounded-3xl border-2 border-dashed border-border p-12 text-center flex flex-col items-center gap-4">
+          <Mascot size={120} message="Let's add your first subject!" bubble={false} />
+          <p className="font-semibold">No subjects yet</p>
           <p className="text-sm text-muted-foreground">Add one above to get started.</p>
         </div>
       ) : (
