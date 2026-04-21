@@ -19,11 +19,11 @@ export function Navbar() {
     <header className="sticky top-0 z-40 glass border-b border-border">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-soft group-hover:rotate-12 transition-transform">
-            <Sparkles className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-soft group-hover:rotate-12 group-hover:scale-110 transition-transform group-active:scale-95">
+            <Sparkles className="h-5 w-5 text-primary-foreground group-hover:animate-pop-in" />
           </div>
           <span className="font-bold text-lg tracking-tight">
-            Smart<span className="text-primary">Study</span>
+            Smart<span className="text-primary group-hover:italic transition-all">Study</span>
           </span>
         </Link>
 
