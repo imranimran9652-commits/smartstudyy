@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { Navbar } from "@/components/Navbar";
+import { ThemeProvider, themeInitScript } from "@/lib/theme";
 
 import appCss from "../styles.css?url";
 
@@ -48,6 +49,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <HeadContent />
       </head>
       <body>
@@ -60,12 +62,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-8 animate-fade-in">
-        <Outlet />
-      </main>
-      <Toaster position="top-right" richColors closeButton />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen">
+        <Navbar />
+        <main className="mx-auto max-w-6xl px-4 py-8 animate-fade-in">
+          <Outlet />
+        </main>
+        <Toaster position="top-right" richColors closeButton />
+      </div>
+    </ThemeProvider>
   );
 }
