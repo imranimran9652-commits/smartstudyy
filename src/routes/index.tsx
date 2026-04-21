@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { useSubjects } from "@/lib/storage";
 import { ProgressCircle } from "@/components/ProgressCircle";
-import { Mascot } from "@/components/Mascot";
 import { BookOpen, Target, Zap, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -76,22 +75,10 @@ function Dashboard() {
               </Link>
             </div>
           </div>
-          <div className="shrink-0 flex flex-col items-center gap-4">
+          <div className="shrink-0 flex justify-center">
             <div className="animate-float">
               <ProgressCircle value={stats.pct} size={180} label="completed" />
             </div>
-            <Mascot
-              size={88}
-              message={
-                stats.total === 0
-                  ? "Add a subject to begin!"
-                  : stats.pct >= 80
-                  ? "Crushing it! 🎉"
-                  : stats.pct >= 40
-                  ? "You're on a roll!"
-                  : "One topic at a time 💜"
-              }
-            />
           </div>
         </div>
       </section>

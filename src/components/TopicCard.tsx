@@ -1,6 +1,5 @@
 import type { Topic, TopicStatus } from "@/lib/storage";
 import { cn } from "@/lib/utils";
-import { celebrate } from "@/lib/confetti";
 import { CheckCircle2, RotateCw, AlertTriangle, X } from "lucide-react";
 
 const statusMap: Record<TopicStatus, { label: string; icon: typeof CheckCircle2; bg: string; text: string }> = {
@@ -46,10 +45,7 @@ export function TopicCard({ topic, onStatusChange, onDelete }: Props) {
           {(Object.keys(statusMap) as TopicStatus[]).map((s) => (
             <button
               key={s}
-              onClick={() => {
-                if (s === "completed" && topic.status !== "completed") celebrate();
-                onStatusChange(s);
-              }}
+              onClick={() => onStatusChange(s)}
               className={cn(
                 "flex-1 text-[11px] font-medium rounded-lg py-1.5 border transition-all",
                 topic.status === s
