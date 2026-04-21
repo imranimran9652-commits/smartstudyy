@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSubjects } from "@/lib/storage";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { BookOpen, Target, Zap, ArrowRight } from "lucide-react";
@@ -23,6 +23,8 @@ function greeting() {
 
 function Dashboard() {
   const { subjects, loaded } = useSubjects();
+  const [greet, setGreet] = useState("Hello");
+  useEffect(() => setGreet(greeting()), []);
 
   const stats = useMemo(() => {
     const all = subjects.flatMap((s) => s.topics);
@@ -55,7 +57,7 @@ function Dashboard() {
         <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-primary/30 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
           <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground/70 uppercase tracking-widest">{greeting()} ✨</p>
+            <p className="text-sm font-semibold text-foreground/70 uppercase tracking-widest">{greet} ✨</p>
             <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight">
               Ready to learn something <span className="italic">amazing</span>?
             </h1>

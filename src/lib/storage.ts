@@ -25,7 +25,8 @@ export type FocusSession = {
 
 const SUBJECTS_KEY = "ssc:subjects";
 const SESSIONS_KEY = "ssc:sessions";
-const THEME_KEY = "ssc:theme";
+
+export { useTheme } from "./theme";
 
 const PALETTE = ["pink", "mint", "lemon", "sky", "lavender", "peach"];
 
@@ -200,27 +201,3 @@ export function useFocusSessions() {
   return { sessions, addSession };
 }
 
-export function useTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const saved = (typeof window !== "undefined" && localStorage.getItem(THEME_KEY)) as
-      | "light"
-      | "dark"
-      | null;
-    const initial = saved ?? "light";
-    setTheme(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
-  }, []);
-
-  const toggle = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "light" ? "dark" : "light";
-      document.documentElement.classList.toggle("dark", next === "dark");
-      localStorage.setItem(THEME_KEY, next);
-      return next;
-    });
-  }, []);
-
-  return { theme, toggle };
-}
