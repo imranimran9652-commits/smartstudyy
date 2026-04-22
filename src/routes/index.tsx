@@ -53,18 +53,18 @@ function Dashboard() {
   return (
     <div className="space-y-10 animate-fade-in">
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-[2rem] bg-gradient-hero p-8 md:p-12 shadow-3d" style={{ perspective: "1200px" }}>
-        <div className="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-white/30 blur-3xl animate-blob" />
-        <div className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-primary/30 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/3 left-1/2 h-40 w-40 rounded-full bg-accent/30 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
+      <section className="hero-surface relative overflow-hidden rounded-[2rem] bg-gradient-hero p-8 md:p-12 shadow-3d" style={{ perspective: "1200px" }}>
+        <div className="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-pink/60 blur-3xl animate-blob mix-blend-screen" />
+        <div className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-sky/60 blur-3xl animate-blob mix-blend-screen" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/3 left-1/2 h-40 w-40 rounded-full bg-lemon/50 blur-3xl animate-blob mix-blend-screen" style={{ animationDelay: "4s" }} />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
           <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground/70 uppercase tracking-widest">{greet} ✨</p>
+            <p className="text-sm font-semibold opacity-75 uppercase tracking-widest">{greet} ✨</p>
             <h1 className="mt-2 text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
               Ready to learn something <span className="text-shimmer italic">amazing</span>?
             </h1>
-            <p className="mt-4 text-foreground/80 max-w-xl text-lg">
+            <p className="mt-4 opacity-85 max-w-xl text-lg">
               {stats.total === 0
                 ? "Create your first subject to begin your journey."
                 : `You have ${stats.total - stats.done} topics left. Keep the streak alive!`}
@@ -73,7 +73,7 @@ function Dashboard() {
               <Link to="/focus" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:scale-105 hover:-translate-y-0.5 transition-all shadow-3d">
                 Start focusing <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/subjects" className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur px-6 py-3 text-sm font-semibold hover:bg-white/80 hover:scale-105 transition-all">
+              <Link to="/subjects" className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur border border-white/30 px-6 py-3 text-sm font-semibold hover:bg-white/30 hover:scale-105 transition-all">
                 Manage subjects
               </Link>
               <Link to="/games" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:scale-105 hover:-translate-y-0.5 transition-all shadow-soft">
