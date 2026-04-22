@@ -110,10 +110,11 @@ function Dashboard() {
           { label: "Completed", value: stats.done, color: "bg-mint", Icon: Target },
           { label: "Revise", value: stats.revise, color: "bg-lemon", Icon: Zap },
           { label: "Weak", value: stats.weak, color: "bg-pink", Icon: Target },
-        ].map((c) => (
+        ].map((c, i) => (
           <div
             key={c.label}
-            className="stat-3d rounded-2xl bg-card border border-border p-5 shadow-soft overflow-hidden"
+            className="stat-3d bounce-hover rise-in rounded-2xl bg-card border border-border p-5 shadow-soft overflow-hidden"
+            style={{ animationDelay: `${120 + i * 110}ms` }}
           >
             <div className={`h-11 w-11 rounded-xl ${c.color} flex items-center justify-center mb-3 shadow-soft`}>
               <c.Icon className="h-5 w-5 text-foreground/80" />
@@ -147,8 +148,12 @@ function Dashboard() {
           </div>
         ) : (
           <div className="grid gap-3">
-            {todayTasks.map(({ s, t }) => (
-              <div key={t.id} className="flex items-center gap-4 rounded-2xl bg-card border border-border p-4 card-3d shadow-soft">
+            {todayTasks.map(({ s, t }, i) => (
+              <div
+                key={t.id}
+                className="rise-in bounce-hover flex items-center gap-4 rounded-2xl bg-card border border-border p-4 shadow-soft"
+                style={{ animationDelay: `${500 + i * 90}ms` }}
+              >
                 <div className={`h-12 w-12 rounded-xl bg-${s.color} flex items-center justify-center font-bold text-foreground/80`}>
                   {s.name[0]}
                 </div>
