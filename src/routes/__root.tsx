@@ -1,6 +1,8 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { Navbar } from "@/components/Navbar";
+import { SideRails } from "@/components/SideRails";
+import { Footer } from "@/components/Footer";
 import { ThemeProvider, themeInitScript } from "@/lib/theme";
 
 import appCss from "../styles.css?url";
@@ -63,11 +65,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="mx-auto max-w-6xl px-4 py-8 animate-fade-in">
+        <SideRails />
+        <main className="mx-auto w-full max-w-6xl px-4 py-8 animate-fade-in flex-1">
           <Outlet />
         </main>
+        <Footer />
         <Toaster position="top-right" richColors closeButton />
       </div>
     </ThemeProvider>
