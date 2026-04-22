@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as SubjectsRouteImport } from './routes/subjects'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as FocusRouteImport } from './routes/focus'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const TimelineRoute = TimelineRouteImport.update({
 const SubjectsRoute = SubjectsRouteImport.update({
   id: '/subjects',
   path: '/subjects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FocusRoute = FocusRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/focus': typeof FocusRoute
+  '/games': typeof GamesRoute
   '/subjects': typeof SubjectsRoute
   '/timeline': typeof TimelineRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/focus': typeof FocusRoute
+  '/games': typeof GamesRoute
   '/subjects': typeof SubjectsRoute
   '/timeline': typeof TimelineRoute
 }
@@ -60,21 +68,36 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
   '/focus': typeof FocusRoute
+  '/games': typeof GamesRoute
   '/subjects': typeof SubjectsRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analytics' | '/focus' | '/subjects' | '/timeline'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/focus'
+    | '/games'
+    | '/subjects'
+    | '/timeline'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analytics' | '/focus' | '/subjects' | '/timeline'
-  id: '__root__' | '/' | '/analytics' | '/focus' | '/subjects' | '/timeline'
+  to: '/' | '/analytics' | '/focus' | '/games' | '/subjects' | '/timeline'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/focus'
+    | '/games'
+    | '/subjects'
+    | '/timeline'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalyticsRoute: typeof AnalyticsRoute
   FocusRoute: typeof FocusRoute
+  GamesRoute: typeof GamesRoute
   SubjectsRoute: typeof SubjectsRoute
   TimelineRoute: typeof TimelineRoute
 }
@@ -93,6 +116,13 @@ declare module '@tanstack/react-router' {
       path: '/subjects'
       fullPath: '/subjects'
       preLoaderRoute: typeof SubjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/focus': {
@@ -123,6 +153,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
   FocusRoute: FocusRoute,
+  GamesRoute: GamesRoute,
   SubjectsRoute: SubjectsRoute,
   TimelineRoute: TimelineRoute,
 }
