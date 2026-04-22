@@ -116,6 +116,8 @@
   --gradient-hero: linear-gradient(135deg, oklch(0.85 0.12 320) 0%, oklch(0.85 0.13 230) 50%, oklch(0.88 0.13 165) 100%);
   --gradient-primary: linear-gradient(135deg, oklch(0.7 0.2 300), oklch(0.7 0.18 230));
   --gradient-warm: linear-gradient(135deg, oklch(0.88 0.13 50), oklch(0.85 0.13 350));
+  --hero-text: oklch(0.22 0.04 280);
+  --hero-text-muted: oklch(0.22 0.04 280 / 0.75);
   --shadow-soft: 0 10px 30px -12px oklch(0.4 0.15 295 / 0.25);
   --shadow-3d: 0 20px 40px -16px oklch(0.4 0.15 295 / 0.35), 0 8px 16px -8px oklch(0.5 0.18 230 / 0.2);
   --shadow-pop: 6px 6px 0 oklch(0.22 0.04 280);
@@ -152,8 +154,13 @@
   --lavender: oklch(0.72 0.15 300);
   --peach: oklch(0.78 0.16 50);
 
+  --gradient-hero: linear-gradient(135deg, oklch(0.42 0.22 300) 0%, oklch(0.38 0.2 260) 45%, oklch(0.45 0.2 195) 100%);
+  --gradient-primary: linear-gradient(135deg, oklch(0.65 0.26 305), oklch(0.6 0.22 220));
+  --gradient-warm: linear-gradient(135deg, oklch(0.55 0.22 25), oklch(0.5 0.24 340));
+  --hero-text: oklch(0.98 0.02 280);
+  --hero-text-muted: oklch(0.98 0.02 280 / 0.78);
   --shadow-soft: 0 10px 30px -10px oklch(0 0 0 / 0.6);
-  --shadow-3d: 0 20px 40px -12px oklch(0 0 0 / 0.7), 0 8px 16px -6px oklch(0.5 0.18 295 / 0.35);
+  --shadow-3d: 0 24px 50px -12px oklch(0.55 0.25 305 / 0.55), 0 10px 20px -6px oklch(0.55 0.22 220 / 0.4);
   --shadow-pop: 6px 6px 0 oklch(0.78 0.18 295);
 }
 
@@ -204,7 +211,16 @@
     background: color-mix(in oklab, var(--card) 70%, transparent);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+  .hero-surface { color: var(--hero-text); }
+  .hero-surface .text-shimmer {
+    background: linear-gradient(90deg, var(--hero-text) 0%, oklch(0.95 0.18 90) 50%, var(--hero-text) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: var(--animate-shimmer);
   }
+}
 
   .text-shimmer {
     background: linear-gradient(90deg, var(--foreground) 0%, var(--primary) 50%, var(--foreground) 100%);
