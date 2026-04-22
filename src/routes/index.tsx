@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSubjects } from "@/lib/storage";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { Mascot } from "@/components/Mascot";
-import { BookOpen, Target, Zap, ArrowRight } from "lucide-react";
+import { BookOpen, Target, Zap, ArrowRight, Gamepad2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,34 +51,41 @@ function Dashboard() {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10 animate-fade-in">
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-hero p-8 md:p-12 shadow-3d">
-        <div className="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/30 blur-3xl animate-blob" />
-        <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-primary/30 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+      <section className="relative overflow-hidden rounded-[2rem] bg-gradient-hero p-8 md:p-12 shadow-3d" style={{ perspective: "1200px" }}>
+        <div className="absolute -top-16 -right-16 h-72 w-72 rounded-full bg-white/30 blur-3xl animate-blob" />
+        <div className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-primary/30 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/3 left-1/2 h-40 w-40 rounded-full bg-accent/30 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
+
         <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
           <div className="flex-1">
             <p className="text-sm font-semibold text-foreground/70 uppercase tracking-widest">{greet} ✨</p>
-            <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight">
-              Ready to learn something <span className="italic">amazing</span>?
+            <h1 className="mt-2 text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+              Ready to learn something <span className="text-shimmer italic">amazing</span>?
             </h1>
-            <p className="mt-3 text-foreground/80 max-w-xl">
+            <p className="mt-4 text-foreground/80 max-w-xl text-lg">
               {stats.total === 0
                 ? "Create your first subject to begin your journey."
                 : `You have ${stats.total - stats.done} topics left. Keep the streak alive!`}
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link to="/focus" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-sm font-semibold hover:scale-105 transition-transform shadow-soft">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/focus" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:scale-105 hover:-translate-y-0.5 transition-all shadow-3d">
                 Start focusing <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/subjects" className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur px-5 py-2.5 text-sm font-semibold hover:bg-white/80 transition-colors">
+              <Link to="/subjects" className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur px-6 py-3 text-sm font-semibold hover:bg-white/80 hover:scale-105 transition-all">
                 Manage subjects
+              </Link>
+              <Link to="/games" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:scale-105 hover:-translate-y-0.5 transition-all shadow-soft">
+                <Gamepad2 className="h-4 w-4" /> Refresh break
               </Link>
             </div>
           </div>
-          <div className="shrink-0 flex flex-col items-center gap-4">
-            <div className="animate-float">
-              <ProgressCircle value={stats.pct} size={180} label="completed" />
+          <div className="shrink-0 flex flex-col items-center gap-4 relative">
+            <div className="relative animate-float">
+              <div className="ring-orbit -inset-6" />
+              <div className="ring-orbit -inset-10" style={{ animationDirection: "reverse", animationDuration: "26s" }} />
+              <ProgressCircle value={stats.pct} size={200} label="completed" />
             </div>
             <Mascot
               size={88}
@@ -97,19 +104,22 @@ function Dashboard() {
       </section>
 
       {/* Stat cards */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ perspective: "1000px" }}>
         {[
           { label: "Subjects", value: subjects.length, color: "bg-lavender", Icon: BookOpen },
           { label: "Completed", value: stats.done, color: "bg-mint", Icon: Target },
           { label: "Revise", value: stats.revise, color: "bg-lemon", Icon: Zap },
           { label: "Weak", value: stats.weak, color: "bg-pink", Icon: Target },
         ].map((c) => (
-          <div key={c.label} className="rounded-2xl bg-card border border-border p-5 card-3d shadow-soft">
-            <div className={`h-10 w-10 rounded-xl ${c.color} flex items-center justify-center mb-3`}>
+          <div
+            key={c.label}
+            className="stat-3d rounded-2xl bg-card border border-border p-5 shadow-soft overflow-hidden"
+          >
+            <div className={`h-11 w-11 rounded-xl ${c.color} flex items-center justify-center mb-3 shadow-soft`}>
               <c.Icon className="h-5 w-5 text-foreground/80" />
             </div>
-            <div className="text-2xl font-bold">{c.value}</div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider">{c.label}</div>
+            <div className="text-3xl font-bold tracking-tight">{c.value}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{c.label}</div>
           </div>
         ))}
       </section>
