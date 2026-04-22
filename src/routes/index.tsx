@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSubjects } from "@/lib/storage";
 import { ProgressCircle } from "@/components/ProgressCircle";
 import { Mascot } from "@/components/Mascot";
+import { CGPACard } from "@/components/CGPACard";
 import { BookOpen, Target, Zap, ArrowRight, Gamepad2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -102,6 +103,9 @@ function Dashboard() {
           </div>
         </div>
       </section>
+
+      {/* CGPA Goal Tracker */}
+      <CGPACard />
 
       {/* Stat cards */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ perspective: "1000px" }}>
