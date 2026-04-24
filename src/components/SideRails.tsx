@@ -24,7 +24,10 @@ export function SideRails() {
         aria-hidden="true"
         className="hidden xl:flex fixed left-4 top-1/2 -translate-y-1/2 z-10 flex-col gap-3 w-44"
       >
-        <div className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover">
+        <div
+          className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover"
+          style={{ animationDelay: "120ms" }}
+        >
           <div className="flex items-center gap-2 mb-2">
             <span className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-pink flex items-center justify-center shadow-soft">
               <Sparkles className="h-4 w-4 text-primary-foreground" />
@@ -36,7 +39,7 @@ export function SideRails() {
               <li
                 key={i}
                 className="flex items-start gap-2 text-xs text-muted-foreground rise-in"
-                style={{ animationDelay: `${200 + i * 90}ms` }}
+                style={{ animationDelay: `${230 + i * 80}ms` }}
               >
                 <span className={`mt-0.5 h-5 w-5 shrink-0 rounded-md ${t.color} flex items-center justify-center`}>
                   <t.icon className="h-3 w-3 text-foreground/80" />
@@ -52,7 +55,7 @@ export function SideRails() {
           <Link
             to="/subjects"
             className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-lavender/30 to-sky/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
-            style={{ animationDelay: "350ms" }}
+            style={{ animationDelay: "670ms" }}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
@@ -73,7 +76,10 @@ export function SideRails() {
         aria-hidden="true"
         className="hidden xl:flex fixed right-4 top-1/2 -translate-y-1/2 z-10 flex-col gap-3 w-44"
       >
-        <div className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover">
+        <div
+          className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover"
+          style={{ animationDelay: "120ms" }}
+        >
           <div className="flex items-center gap-2 mb-3">
             <span className="h-8 w-8 rounded-lg bg-gradient-to-br from-mint to-sky flex items-center justify-center shadow-soft">
               <Trophy className="h-4 w-4 text-foreground/80" />
@@ -95,7 +101,7 @@ export function SideRails() {
 
         <div
           className="rise-in rounded-2xl border border-border bg-gradient-to-br from-lemon/30 via-pink/20 to-lavender/30 backdrop-blur p-4 shadow-soft bounce-hover text-center"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "230ms" }}
         >
           <Flame className="h-5 w-5 text-primary mx-auto mb-1" />
           <div className="text-2xl font-extrabold">7</div>
@@ -109,7 +115,7 @@ export function SideRails() {
           <Link
             to="/subjects"
             className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-mint/30 to-lemon/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
-            style={{ animationDelay: "400ms" }}
+            style={{ animationDelay: "340ms" }}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
@@ -129,7 +135,7 @@ export function SideRails() {
           <Link
             to="/focus"
             className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-peach/30 to-pink/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
-            style={{ animationDelay: "500ms" }}
+            style={{ animationDelay: "450ms" }}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
