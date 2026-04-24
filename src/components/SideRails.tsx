@@ -39,7 +39,7 @@ export function SideRails() {
               <li
                 key={i}
                 className="flex items-start gap-2 text-xs text-muted-foreground rise-in"
-                style={{ animationDelay: `${200 + i * 90}ms` }}
+                style={{ animationDelay: `${230 + i * 80}ms` }}
               >
                 <span className={`mt-0.5 h-5 w-5 shrink-0 rounded-md ${t.color} flex items-center justify-center`}>
                   <t.icon className="h-3 w-3 text-foreground/80" />
