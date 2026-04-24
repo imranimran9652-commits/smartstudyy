@@ -115,7 +115,7 @@ export function SideRails() {
           <Link
             to="/subjects"
             className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-mint/30 to-lemon/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
-            style={{ animationDelay: "400ms" }}
+            style={{ animationDelay: "340ms" }}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
