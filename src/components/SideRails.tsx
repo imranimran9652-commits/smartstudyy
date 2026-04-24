@@ -24,7 +24,10 @@ export function SideRails() {
         aria-hidden="true"
         className="hidden xl:flex fixed left-4 top-1/2 -translate-y-1/2 z-10 flex-col gap-3 w-44"
       >
-        <div className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover">
+        <div
+          className="rise-in rounded-2xl border border-border bg-card/70 backdrop-blur p-4 shadow-soft bounce-hover"
+          style={{ animationDelay: "120ms" }}
+        >
           <div className="flex items-center gap-2 mb-2">
             <span className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-pink flex items-center justify-center shadow-soft">
               <Sparkles className="h-4 w-4 text-primary-foreground" />
