@@ -101,7 +101,7 @@ export function SideRails() {
 
         <div
           className="rise-in rounded-2xl border border-border bg-gradient-to-br from-lemon/30 via-pink/20 to-lavender/30 backdrop-blur p-4 shadow-soft bounce-hover text-center"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "230ms" }}
         >
           <Flame className="h-5 w-5 text-primary mx-auto mb-1" />
           <div className="text-2xl font-extrabold">7</div>
