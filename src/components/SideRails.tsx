@@ -1,4 +1,6 @@
-import { Sparkles, BookOpen, Brain, Coffee, Trophy, Flame } from "lucide-react";
+import { Sparkles, BookOpen, Brain, Coffee, Trophy, Flame, BookPlus, ListPlus } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useSubjects, useFocusSessions } from "@/lib/storage";
 
 const TIPS = [
   { icon: Brain, text: "Active recall beats re-reading.", color: "bg-lavender" },
@@ -8,6 +10,13 @@ const TIPS = [
 ];
 
 export function SideRails() {
+  const { subjects, loaded } = useSubjects();
+  const { sessions } = useFocusSessions();
+
+  const hasSubjects = subjects.length > 0;
+  const hasTopics = subjects.some((s) => s.topics.length > 0);
+  const hasSessions = sessions.length > 0;
+
   return (
     <>
       {/* Left rail */}
@@ -37,6 +46,26 @@ export function SideRails() {
             ))}
           </ul>
         </div>
+
+        {/* Empty-state: no subjects yet */}
+        {loaded && !hasSubjects && (
+          <Link
+            to="/subjects"
+            className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-lavender/30 to-sky/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
+            style={{ animationDelay: "350ms" }}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
+                <BookPlus className="h-4 w-4 text-primary" />
+              </span>
+              <h3 className="text-xs font-bold uppercase tracking-widest">No subjects</h3>
+            </div>
+            <p className="text-[11px] leading-snug text-muted-foreground">
+              Add your first subject to start tracking progress.
+            </p>
+            <span className="mt-2 inline-block text-[11px] font-semibold text-primary">+ Add subject →</span>
+          </Link>
+        )}
       </aside>
 
       {/* Right rail */}
@@ -74,6 +103,46 @@ export function SideRails() {
             day streak
           </div>
         </div>
+
+        {/* Empty-state: no topics/tasks yet */}
+        {loaded && hasSubjects && !hasTopics && (
+          <Link
+            to="/subjects"
+            className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-mint/30 to-lemon/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
+            style={{ animationDelay: "400ms" }}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
+                <ListPlus className="h-4 w-4 text-primary" />
+              </span>
+              <h3 className="text-xs font-bold uppercase tracking-widest">No tasks</h3>
+            </div>
+            <p className="text-[11px] leading-snug text-muted-foreground">
+              Add topics to your subjects to plan your study.
+            </p>
+            <span className="mt-2 inline-block text-[11px] font-semibold text-primary">+ Add topic →</span>
+          </Link>
+        )}
+
+        {/* Empty-state: no focus sessions yet */}
+        {loaded && !hasSessions && (
+          <Link
+            to="/focus"
+            className="rise-in rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-peach/30 to-pink/20 backdrop-blur p-4 shadow-soft bounce-hover text-left block"
+            style={{ animationDelay: "500ms" }}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span className="h-7 w-7 rounded-lg bg-primary/15 flex items-center justify-center">
+                <Coffee className="h-4 w-4 text-primary" />
+              </span>
+              <h3 className="text-xs font-bold uppercase tracking-widest">No sessions</h3>
+            </div>
+            <p className="text-[11px] leading-snug text-muted-foreground">
+              Start a focus session to build your streak.
+            </p>
+            <span className="mt-2 inline-block text-[11px] font-semibold text-primary">Start focus →</span>
+          </Link>
+        )}
       </aside>
     </>
   );
