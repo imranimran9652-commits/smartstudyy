@@ -66,6 +66,9 @@ export function SideRails() {
             <p className="text-[11px] leading-snug text-muted-foreground">
               Add your first subject to start tracking progress.
             </p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/80">
+              What to do next
+            </p>
             <span className="mt-2 inline-block text-[11px] font-semibold text-primary">+ Add subject →</span>
           </Link>
         )}
@@ -126,6 +129,9 @@ export function SideRails() {
             <p className="text-[11px] leading-snug text-muted-foreground">
               Add topics to your subjects to plan your study.
             </p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/80">
+              What to do next
+            </p>
             <span className="mt-2 inline-block text-[11px] font-semibold text-primary">+ Add topic →</span>
           </Link>
         )}
@@ -145,6 +151,9 @@ export function SideRails() {
             </div>
             <p className="text-[11px] leading-snug text-muted-foreground">
               Start a focus session to build your streak.
+            </p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/80">
+              What to do next
             </p>
             <span className="mt-2 inline-block text-[11px] font-semibold text-primary">Start focus →</span>
           </Link>
